@@ -125,7 +125,7 @@ class Client extends ClientListener implements ClientInterface
             $request->addHeaders($headers);
         }
 
-        if (count($params) > 0) {
+        if ((is_string($params) && $params != "") || (is_array($params) && count($params) > 0)) {
             $request->setContent(is_array($params) ? http_build_query($params) : $params);
         }
 
